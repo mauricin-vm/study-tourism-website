@@ -21,7 +21,7 @@ body {
   text-align: center;
   margin-bottom: 40px;
   padding: 20px 0;
-  background: linear-gradient(135deg, #b18305 0%, rgb(202, 160, 21) 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border-radius: 10px;
 }
@@ -34,6 +34,183 @@ body {
 .header p {
   font-size: 1.2rem;
   opacity: 0.9;
+}
+
+.discovery-section {
+  margin: 40px 0;
+}
+
+.discovery-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.discovery-card,
+.result-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 200px;
+}
+
+
+.discovery-content,
+.result-content {
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.discovery-content h3,
+.result-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.discovery-content p,
+.result-content p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.discover-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: bold;
+}
+
+.discover-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.discover-button:active {
+  transform: translateY(0);
+}
+
+.result-card {
+  border: 2px dashed #ddd;
+  background: #f9f9f9;
+}
+
+.result-card.loading {
+  border: 2px solid #667eea;
+  background: linear-gradient(135deg, #f0f2ff 0%, #e8ebff 100%);
+  animation: pulse 1s infinite;
+}
+
+.result-card.revealed {
+  border: 2px solid #4caf50;
+  background: white;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.countdown {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #667eea;
+  margin: 20px 0;
+}
+
+.placeholder-content {
+  opacity: 0.7;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 30px 0;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  color: #333;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.refresh-section-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 500;
+}
+
+.refresh-section-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+  .discovery-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .discovery-content,
+  .result-content {
+    padding: 25px;
+    min-height: 180px;
+  }
+
+  .section-title {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .section-title h2 {
+    font-size: 1.6rem;
+  }
+
+  .section-title h2:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .cards-grid {
@@ -49,17 +226,12 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.card-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
 }
 
 .card-content {
@@ -76,6 +248,46 @@ body {
   font-size: 1rem;
   color: #666;
   line-height: 1.6;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #e74c3c;
+  background: #ffeaea;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #e0e0e0;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

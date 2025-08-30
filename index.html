@@ -13,11 +13,46 @@
 
 <body> <!-- page body (content) -->
   <div class="container">
+
+    <!-- header -->
     <div class="header">
-      <h1>Destinos Turísticos</h1>
+      <h1>Locais Turísticos</h1>
       <p>Descubra os lugares mais incríveis para visitar e criar memórias inesquecíveis</p>
     </div>
 
+    <!-- discovery section -->
+    <div class="discovery-section">
+      <div class="discovery-cards">
+
+        <!-- discovery card -->
+        <div class="discovery-card">
+          <div class="discovery-content">
+            <h3>🎯 Descubra seu próximo destino!</h3>
+            <p>Não sabe onde viajar? Deixe a sorte escolher sua próxima aventura!</p>
+            <button class="discover-button" onclick="discoverDestination()">🎲 Descobrir Destino</button>
+          </div>
+        </div>
+
+        <!-- result card -->
+        <div class="result-card" id="resultCard">
+          <div class="result-content" id="resultContent">
+            <div class="placeholder-content">
+              <h3>✈️ Seu destino aparecerá aqui</h3>
+              <p>Clique no botão ao lado para descobrir onde será sua próxima viagem!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- more places section -->
+    <div class="section-title">
+      <h2>Veja mais</h2>
+      <button class="refresh-section-btn" onclick="loadTouristPlaces()">🔄</button>
+    </div>
+
+    <!-- six places section -->
     <div class="cards-grid">
       <div class="card">
         <img
@@ -91,6 +126,8 @@
       </div>
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
